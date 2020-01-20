@@ -265,6 +265,7 @@ function reset(i) {
 }
 
 window.onload = function () {
+  //cooler multiplayer mode!
   game.document = this.document
   game.changeRootColor("blue");
   game.blue = true;

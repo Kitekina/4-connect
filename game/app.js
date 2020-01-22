@@ -18,10 +18,18 @@ app.set("view engine", "ejs");
 
 http.createServer(app).listen(3000);
 
-app.get('/game.html', function (req, res) {
-  res.render('game.html', {game: game})
+app.get('/game', function (req, res) {
+  res.render('game.ejs', {game: game})
 });
 
-app.get('/game', function (req, res) {
-  res.render('game', {game: game})
+app.post('/click', function (req, res) {
+  console.log(req.query)
+//todo set game state
+  var player = req.query.player;
+  var x = req.query.x;
+  var y = req.query.y;
+  console.log(x + "," + y);
+  game.setPlayer(player);
+  game.clickIt(x,y);
+  res.send(game.getGameState())
 });
